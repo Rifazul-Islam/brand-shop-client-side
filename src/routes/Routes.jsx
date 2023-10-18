@@ -3,6 +3,7 @@ import MainLayout from "../layout/MainLayout";
 import Home from "../components/Home/Home";
 import AddProduct from "../components/AddProduct/AddProduct";
 import Products from "../components/Products/Products";
+import Details from "../components/Details/Details";
 
 const router = createBrowserRouter([
  {
@@ -22,6 +23,11 @@ const router = createBrowserRouter([
        path:"/products/:id",
        element:<Products></Products>,
        loader:({params})=>fetch(`http://localhost:5000/categories/${params.id}`)
+     },
+     {
+      path:"/details/:id",
+      element:<Details></Details>,
+      loader:({params})=>fetch(`http://localhost:5000/allCategories/${params.id}`)
      }
     ]
  }

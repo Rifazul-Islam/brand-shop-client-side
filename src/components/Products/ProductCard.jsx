@@ -1,7 +1,9 @@
+import { Link } from "react-router-dom";
 
 const ProductCard = ({product,setBrand}) => {
-const {name,photo,category,types,price,description,rating} = product
-setBrand(category)
+  setBrand(product?.category)
+const {name,photo,category,types,price,description,rating, _id} = product
+
 return (
 <div className=" mb-6 ">
 <div className="card card-compact  bg-base-100 shadow-2xl ">
@@ -16,7 +18,7 @@ return (
     </div>
     <div className="card-actions pt-2 justify-start">
       <button className="btn btn-secondary capitalize">Update</button>
-      <button className="btn btn-success capitalize ml-10">Details</button>
+      <Link to={`/details/${_id}`} > <button className="btn btn-success capitalize ml-10">Details</button> </Link>
     </div>
   </div>
 </div>                                    
