@@ -1,8 +1,39 @@
-import {  useLoaderData } from "react-router-dom";
+import { useLoaderData } from "react-router-dom";
+import Swal from "sweetalert2";
 
 const Details = () => {
 const productDetails = useLoaderData();
-const {name,photo,category,types,rating,price,_id,description} = productDetails
+const {name,photo,category,types,rating,price,description} = productDetails;
+
+const handlerProduct = ()=>{
+   
+    const product = {name,photo,category,types,rating,price,description}
+    console.log(product);
+    
+ fetch("http://localhost:5000/stores",{
+    method:"POST",
+    headers:{
+      "Content-type" : "application/json"
+    },
+    body: JSON.stringify(product)
+  })
+   .then(res => res.json())
+   .then(data => {
+      if(data.insertedId){
+        Swal.fire({
+            title: 'success!',
+            text: 'Your Product Store Successfully',
+            icon: 'success',
+            confirmButtonText: 'ok'
+          })
+      }
+   })
+   
+}
+
+
+
+
 return (
 <div>
 
@@ -18,7 +49,7 @@ return (
          <p> price: {price} </p>
     </div>
     <div className="card-actions justify-end">
-      <button className="btn btn-primary capitalize">Add to Cart</button>
+       <button onClick={handlerProduct} className="btn btn-primary capitalize">Add to Cart</button> 
     </div>
   </div>
 </div> 
