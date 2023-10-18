@@ -34,9 +34,9 @@ return (
       >
         <div className='pl-20'>
         <SwiperSlide> <img src="https://i.ibb.co/vsd3c0w/section1.jpg" alt="" />  </SwiperSlide>
-        <SwiperSlide> <img src="https://i.ibb.co/yNVXmPM/mercedes-benz1.jpg" alt="" />  </SwiperSlide>
+        <SwiperSlide> <img src="https://i.ibb.co/8DLFx2N/slide3.jpg" alt="" />  </SwiperSlide>
         <SwiperSlide> <img src="https://i.ibb.co/ZB5VFnQ/tesla3.jpg" alt="" /> </SwiperSlide>  
-        <SwiperSlide><img src="https://i.ibb.co/zQyWKW8/tesla2.jpg" alt="" /></SwiperSlide>
+        <SwiperSlide><img src="https://i.ibb.co/58mBS3Q/slide2.jpg" alt="" /></SwiperSlide>
      
         
         </div>
