@@ -1,4 +1,5 @@
 import { useState } from "react";
+import Swal from "sweetalert2";
 
 const AddProduct = () => {
 const[error,setError] = useState("")
@@ -26,6 +27,29 @@ const handlerAddProduct =(e)=>{
 
   const newProduct = {name,photo,category,types,price,description,rating}
   console.log(newProduct);
+
+ fetch("http://localhost:5000/allCategories",{
+   method:"POST",
+   headers:{
+     "Content-type" : "application/json"
+   },
+   body: JSON.stringify(newProduct)
+ })
+ .then(res => res.json())
+ .then(data =>{
+    if(data.insertedId){
+    Swal.fire({
+  title: 'success!',
+  text: 'Your Product Add Successfully',
+  icon: 'success',
+  confirmButtonText: 'ok'
+})
+    }
+    
+   form.reset() 
+ })
+
+
 }
 
 
@@ -72,7 +96,7 @@ const handlerAddProduct =(e)=>{
          <option>BMW</option>
          <option>Mercedes-Benz</option>
          <option>Tesla</option>
-    </select>
+       </select>
 
         
          </label>
@@ -84,18 +108,17 @@ const handlerAddProduct =(e)=>{
          </label>
          <label className="input-group">
 
-<select name="types" placeholder="Please Select"  className="select select-bordered w-full " required >
-  <option defaultValue={"Please select Type"}>Please select Type</option>
-  <option>Toyota</option>
-  <option>Ford</option>
-  <option>BMW</option>
-  <option>Mercedes-Benz</option>
-  <option>Tesla</option>
-        </select>
+     <select name="types" placeholder="Please Select"  className="select select-bordered w-full " required >
+       <option defaultValue={"Please select Type"}>Please select Type</option>
+       <option>car</option>
+      <option>minicar</option>
+      <option>minibaz</option>
+      <option>other</option>
+     </select>
          
          
-         </label>
-       </div>
+ </label>
+</div>
        
  </div>  
  <div className="flex gap-3 pt-5">
