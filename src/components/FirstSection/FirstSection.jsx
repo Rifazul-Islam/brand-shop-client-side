@@ -4,7 +4,7 @@ return (
 <div className="bg-slate-100 p-4 mt-10 rounded-md">
 <div className="flex flex-col md:flex-row lg:px-24 gap-7">
       <div>
-           <img className="md:w-[1200px] rounded-md" src="https://i.ibb.co/vsd3c0w/section1.jpg" alt="" />   
+           <img className="lg:w-[1400px] rounded-md" src="https://i.ibb.co/vsd3c0w/section1.jpg" alt="" />   
       </div>
 
 <div>
