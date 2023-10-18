@@ -1,6 +1,6 @@
 import Swal from "sweetalert2";
 
-const Cart = ({product}) => {
+const Cart = ({product,setProducts,products}) => {
 const {name,photo,category,types,price,description,rating,_id} = product
 
 const handlerDelete = id =>{
@@ -16,6 +16,11 @@ const handlerDelete = id =>{
             icon: 'success',
             confirmButtonText: 'ok'
           })
+
+     const remaining = products.filter(product => product._id !== id)
+     setProducts(remaining)
+
+
     }
   })
 }
