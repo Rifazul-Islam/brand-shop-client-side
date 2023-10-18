@@ -1,6 +1,27 @@
+import Swal from "sweetalert2";
 
 const Cart = ({product}) => {
-const {name,photo,category,types,price,description,rating} = product
+const {name,photo,category,types,price,description,rating,_id} = product
+
+const handlerDelete = id =>{
+  fetch(`http://localhost:5000/stores/${id}`,{
+    method:"DELETE"
+  })
+  .then(res => res.json())
+  .then(data =>{
+    if(data?.deletedCount > 0){
+        Swal.fire({
+            title: 'success!',
+            text: 'Your Product Delete Successfully',
+            icon: 'success',
+            confirmButtonText: 'ok'
+          })
+    }
+  })
+}
+
+
+
 return (
 <div>
   <div className="card card-compact  bg-base-100 shadow-2xl border-2">
@@ -14,7 +35,7 @@ return (
          <p> price: {price} </p>
     </div>
     <div className="card-actions pt-2 justify-start">
-    <button className="btn btn-secondary capitalize">Delete</button>
+    <button onClick={()=>handlerDelete(_id)} className="btn btn-secondary capitalize">Delete</button>
 
     </div>
   </div>
