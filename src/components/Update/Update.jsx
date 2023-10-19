@@ -19,7 +19,7 @@ const handlerAddProduct =(e)=>{
   const rating = form.rating.value;
   const updateProduct = {name,photo,category,types,price,description,rating};
   
-   fetch(`http://localhost:5000/allCategories/${products?._id}`, {
+   fetch(`https://automotive-sever-side.vercel.app/allCategories/${products?._id}`, {
      method:"PUT",
      headers:{
       "Content-type" : "application/json"

@@ -28,7 +28,7 @@ const handlerAddProduct =(e)=>{
   const newProduct = {name,photo,category,types,price,description,rating}
   console.log(newProduct);
 
- fetch("http://localhost:5000/allCategories",{
+ fetch("https://automotive-sever-side.vercel.app/allCategories",{
    method:"POST",
    headers:{
      "Content-type" : "application/json"

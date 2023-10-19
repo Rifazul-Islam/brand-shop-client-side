@@ -4,7 +4,7 @@ const Cart = ({product,setProducts,products}) => {
 const {name,photo,category,types,price,description,rating,_id} = product
 
 const handlerDelete = id =>{
-  fetch(`http://localhost:5000/stores/${id}`,{
+  fetch(`https://automotive-sever-side.vercel.app/stores/${id}`,{
     method:"DELETE"
   })
   .then(res => res.json())
@@ -32,9 +32,9 @@ return (
   <div className="card card-compact  bg-base-100 shadow-2xl border-2">
   <figure><img className="w-full h-[200px]" src={photo} alt="Shoes"/></figure>
   <div className=" px-2 py-4">
-    <h2 className="card-title text-orange-500"> Title: {name} </h2>
+    <h2 className="card-title "> Name: {name} </h2>
     <div className="font-bold">
-        <p> Brand Name : {category} </p>
+        <p className="text-orange-500"> Brand Name : {category} </p>
         <p> Types : {types} </p>
          <p> Rating : {rating} </p>
          <p> price: {price} </p>

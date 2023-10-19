@@ -12,9 +12,9 @@ return (
 <div className="card card-compact  bg-base-100 shadow-2xl ">
   <figure><img className="w-full h-[200px]" src={photo} alt="Shoes"/></figure>
   <div className=" px-2 py-4">
-    <h2 className="card-title text-orange-500"> Name: {name} </h2>
+    <h2 className="card-title text-orange-500">  Brand Name :{category}  </h2>
     <div className="font-bold">
-        <p> Brand Name : {category} </p>
+        <p>Name : {name}  </p>
         <p> Types : {types} </p>
          <p> Rating : {rating} </p>
          <p> price: {price} </p>

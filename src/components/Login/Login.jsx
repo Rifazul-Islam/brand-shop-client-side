@@ -2,8 +2,9 @@ import { useContext } from "react";
 import { Link, useNavigate, } from "react-router-dom";
 import { AuthContext } from "../Providers/AuthProviders";
 import { toast } from "react-toastify";
-
+import { AiFillGithub } from "react-icons/ai";
 const Login = () => {
+  
 const{userLogin,gitHubLogin} = useContext(AuthContext)
 const navigate = useNavigate()
  const handlerLogin = (e)=>{
@@ -72,7 +73,7 @@ return (
 
         <p className='font-medium  py-4 text-center'> Do not have an Account <Link className='text-indigo-600' to="/register" > Register </Link> </p>
     
-        <button className="btn" onClick={handlerGithubLogin}> GitHub Login</button>
+        <div className="px-4"> <button className="btn btn-success border-none hover:bg-slate-300 capitalize mb-4 w-full" onClick={handlerGithubLogin}> <AiFillGithub/> GitHub Login</button> </div>
     
     </div>
   </div>

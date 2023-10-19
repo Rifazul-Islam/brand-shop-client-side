@@ -10,7 +10,7 @@ const handlerProduct = ()=>{
     const product = {name,photo,category,types,rating,price,description}
     console.log(product);
     
- fetch("http://localhost:5000/stores",{
+ fetch("https://automotive-sever-side.vercel.app/stores",{
     method:"POST",
     headers:{
       "Content-type" : "application/json"

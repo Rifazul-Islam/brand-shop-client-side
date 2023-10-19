@@ -20,7 +20,7 @@ const router = createBrowserRouter([
      {
         path:"/",
         element:<Home></Home>,
-        loader:()=>fetch("http://localhost:5000/categories")
+        loader:()=>fetch("https://automotive-sever-side.vercel.app/categories")
      },
      {
        path:"/addProduct",
@@ -29,22 +29,22 @@ const router = createBrowserRouter([
      {
        path:"/products/:id",
        element:<Products></Products>,
-       loader:({params})=>fetch(`http://localhost:5000/categories/${params.id}`)
+       loader:({params})=>fetch(`https://automotive-sever-side.vercel.app/categories/${params.id}`)
      },
      {
       path:"/details/:id",
       element: <PrivateRoute> <Details></Details></PrivateRoute>,
-      loader:({params})=>fetch(`http://localhost:5000/allCategories/${params.id}`)
+      loader:({params})=>fetch(`https://automotive-sever-side.vercel.app/allCategories/${params.id}`)
      },
      {
        path:"/myCart",
        element: <PrivateRoute> <MyCart></MyCart> </PrivateRoute>,
-       loader:()=>fetch("http://localhost:5000/stores")
+       loader:()=>fetch("https://automotive-sever-side.vercel.app/stores")
      },
       {
        path:"/update/:id",
        element:<PrivateRoute> <Update></Update></PrivateRoute>  ,
-       loader:({params})=>fetch(`http://localhost:5000/allCategories/${params.id}`)
+       loader:({params})=>fetch(`https://automotive-sever-side.vercel.app/allCategories/${params.id}`)
      },
      {
       path:"/register",
