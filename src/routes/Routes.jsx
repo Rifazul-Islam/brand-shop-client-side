@@ -7,6 +7,8 @@ import Details from "../components/Details/Details";
 import MyCart from "../components/MyCart/MyCart";
 import Update from "../components/Update/Update";
 import ErrorPage from "../components/ErrorPage/ErrorPage";
+import Register from "../components/Register/Register";
+import Login from "../components/Login/Login";
 
 const router = createBrowserRouter([
  {
@@ -42,6 +44,14 @@ const router = createBrowserRouter([
        path:"/update/:id",
        element:<Update></Update>,
        loader:({params})=>fetch(`http://localhost:5000/allCategories/${params.id}`)
+     },
+     {
+      path:"/register",
+      element:<Register></Register>
+     },
+     {
+      path:"/login",
+      element:<Login></Login>
      }
 
     ]

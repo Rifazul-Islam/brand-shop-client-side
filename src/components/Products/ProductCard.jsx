@@ -1,9 +1,12 @@
 import { Link } from "react-router-dom";
 
 const ProductCard = ({product,setBrand}) => {
-  setBrand(product?.category)
 const {name,photo,category,types,price,description,rating, _id} = product
-
+ if(product){
+   setBrand(product?.category)
+ }else{
+   setBrand(" ")
+ }
 return (
 <div className=" mb-6 ">
 <div className="card card-compact  bg-base-100 shadow-2xl ">
