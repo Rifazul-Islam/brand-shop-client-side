@@ -1,6 +1,12 @@
+import { useContext } from 'react';
 import { Link } from 'react-router-dom';
+import { AuthContext } from '../Providers/AuthProviders';
+import Swal from 'sweetalert2';
+import { toast } from 'react-toastify';
 
 const Register = () => {
+
+const{createNewUser} = useContext(AuthContext)
 
 const handlerRegister = (e)=>{
   e.preventDefault();
@@ -9,7 +15,44 @@ const handlerRegister = (e)=>{
   const photo = form.photo.value;
   const email = form.email.value;
   const password = form.password.value;
-   console.log(name,photo,email,password);
+  console.log(name,photo,email,password);
+
+  if(password.length < 6){
+    return Swal.fire({
+              title: 'error!',
+              text: 'Provide Must six Character',
+              icon: 'error',
+              confirmButtonText: 'ok'
+            })
+  }
+
+  if(!/^(?=.*[a-z])(?=.*[A-Z])/.test(password)){
+    return   Swal.fire({
+              title: 'error!',
+              text: 'Please At list one LowerCase and one UpperCase Letter Provide',
+              icon: 'error',
+              confirmButtonText: 'ok'
+            }) 
+  }
+
+
+  createNewUser(email,password)
+  .then(result =>{
+     const userInfo = result.user;
+     console.log(userInfo);
+   Swal.fire({
+            title: 'success!',
+            text: 'User Register Successfully',
+            icon: 'success',
+            confirmButtonText: 'ok'
+          })
+
+  })
+  .catch(error =>{
+     toast.error(error.message)
+
+  })
+
 }
 
 
