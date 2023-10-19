@@ -6,7 +6,7 @@ import { toast } from 'react-toastify';
 
 const Register = () => {
 
-const{createNewUser} = useContext(AuthContext)
+const{createNewUser,userProfileUpdate,setUser} = useContext(AuthContext)
 
 const handlerRegister = (e)=>{
   e.preventDefault();
@@ -39,13 +39,29 @@ const handlerRegister = (e)=>{
   createNewUser(email,password)
   .then(result =>{
      const userInfo = result.user;
-     console.log(userInfo);
+    
    Swal.fire({
             title: 'success!',
             text: 'User Register Successfully',
             icon: 'success',
             confirmButtonText: 'ok'
           })
+
+     // user Profile update
+     userProfileUpdate(userInfo,{displayName:name,photoURL:photo}) 
+     .then(()=>{
+        Swal.fire({
+            title: 'success!',
+            text: 'User Profile Update Successfully',
+            icon: 'success',
+            confirmButtonText: 'ok'
+          }) 
+          setUser({...userInfo,displayName:name,photoURL:photo})
+
+     })    
+     .catch(error =>{
+    toast.error(error.message)
+     })
 
   })
   .catch(error =>{
