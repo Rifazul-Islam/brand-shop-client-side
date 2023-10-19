@@ -1,13 +1,12 @@
 import { useContext } from 'react';
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import { AuthContext } from '../Providers/AuthProviders';
-import Swal from 'sweetalert2';
 import { toast } from 'react-toastify';
 
 const Register = () => {
 
 const{createNewUser,userProfileUpdate,setUser} = useContext(AuthContext)
-
+const navigate = useNavigate()
 const handlerRegister = (e)=>{
   e.preventDefault();
   const form = e.target;
@@ -18,45 +17,27 @@ const handlerRegister = (e)=>{
   console.log(name,photo,email,password);
 
   if(password.length < 6){
-    return Swal.fire({
-              title: 'error!',
-              text: 'Provide Must six Character',
-              icon: 'error',
-              confirmButtonText: 'ok'
-            })
+    return toast.error("Please Private Must be six character") 
+     
   }
 
   if(!/^(?=.*[a-z])(?=.*[A-Z])/.test(password)){
-    return   Swal.fire({
-              title: 'error!',
-              text: 'Please At list one LowerCase and one UpperCase Letter Provide',
-              icon: 'error',
-              confirmButtonText: 'ok'
-            }) 
+    return toast.error("Please At list one LowerCase and one UpperCase Letter Provide")
   }
 
 
   createNewUser(email,password)
   .then(result =>{
      const userInfo = result.user;
+    toast.success("User Register Successfully")
     
-   Swal.fire({
-            title: 'success!',
-            text: 'User Register Successfully',
-            icon: 'success',
-            confirmButtonText: 'ok'
-          })
 
      // user Profile update
      userProfileUpdate(userInfo,{displayName:name,photoURL:photo}) 
      .then(()=>{
-        Swal.fire({
-            title: 'success!',
-            text: 'User Profile Update Successfully',
-            icon: 'success',
-            confirmButtonText: 'ok'
-          }) 
+         toast.success("User Profile Update Successfully")
           setUser({...userInfo,displayName:name,photoURL:photo})
+          navigate("/")
 
      })    
      .catch(error =>{

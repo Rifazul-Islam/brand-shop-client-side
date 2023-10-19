@@ -1,10 +1,11 @@
 import { useContext } from "react";
-import { Link } from "react-router-dom";
+import { Link, useNavigate, } from "react-router-dom";
 import { AuthContext } from "../Providers/AuthProviders";
 import { toast } from "react-toastify";
 
 const Login = () => {
-const{userLogin} = useContext(AuthContext)
+const{userLogin,gitHubLogin} = useContext(AuthContext)
+const navigate = useNavigate()
  const handlerLogin = (e)=>{
   e.preventDefault();
   const form = e.target;
@@ -16,11 +17,28 @@ const{userLogin} = useContext(AuthContext)
      const userInfo = result.user
      console.log(userInfo);
      toast.success("User Login Successfully")
+     navigate("/")
    })
    .catch(error =>{
     toast.error(error.message)
    })
-}             
+}       
+
+
+const handlerGithubLogin = ()=>{
+  gitHubLogin()
+  .then(result =>{
+     const userInfo = result.user;
+     console.log(userInfo);
+     toast.success("GitHub Login Successfully")
+     navigate("/")
+     
+  })
+  .catch(error => {
+   toast.error(error.message)
+  })
+}
+
 
 return (
  <div>
@@ -51,7 +69,11 @@ return (
           <button className="btn btn-primary capitalize">Login</button>
         </div>
       </form>
+
         <p className='font-medium  py-4 text-center'> Do not have an Account <Link className='text-indigo-600' to="/register" > Register </Link> </p>
+    
+        <button className="btn" onClick={handlerGithubLogin}> GitHub Login</button>
+    
     </div>
   </div>
 </div>        
