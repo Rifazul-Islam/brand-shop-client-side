@@ -10,7 +10,7 @@ const AuthProviders = ({children}) => {
 
  const [user,setUser] = useState(null)
  const[loading,setLoading] = useState(true)
-
+ const[dark , setDark] = useState(false)
  // create A New user
  const createNewUser = (email,password) =>{
   setLoading(true)
@@ -68,6 +68,8 @@ const AuthProviders = ({children}) => {
  const authInfo ={
   user,
   loading,
+  dark,
+  setDark,
   createNewUser,
   userLogin,
   userProfileUpdate,

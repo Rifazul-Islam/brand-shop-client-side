@@ -39,7 +39,6 @@ const router = createBrowserRouter([
      {
        path:"/myCart",
        element: <PrivateRoute> <MyCart></MyCart> </PrivateRoute>,
-       loader:()=>fetch("https://automotive-sever-side.vercel.app/stores")
      },
       {
        path:"/update/:id",

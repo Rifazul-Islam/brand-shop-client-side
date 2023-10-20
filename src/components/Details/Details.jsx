@@ -1,13 +1,17 @@
+import { useContext } from "react";
 import { useLoaderData } from "react-router-dom";
 import Swal from "sweetalert2";
+import { AuthContext } from "../Providers/AuthProviders";
 
 const Details = () => {
 const productDetails = useLoaderData();
+const {user} = useContext(AuthContext)
+ const email = user?.email
 const {name,photo,category,types,rating,price,description} = productDetails;
 
 const handlerProduct = ()=>{
    
-    const product = {name,photo,category,types,rating,price,description}
+    const product = {name,photo,category,types,rating,price,description,email}
     console.log(product);
     
  fetch("https://automotive-sever-side.vercel.app/stores",{
