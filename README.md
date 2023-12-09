@@ -1,14 +1,14 @@
-# My Project Live Link 
+# My Project Live Link
+
 (https://automotive-client-side.web.app/)
-## My Project Feature 
+
+## My Project Feature
+
 - My Project brand Car related.
-- It project technology use react firebase. 
-- It project dataBase use MongoDB.
-- User login will get many benefits.
-- User can new product add.
+- After the user login here, he can enjoy many benefits like he can update his favorite brands.
+- If desired, after clicking the button on that user's details, his cards or his favorite car will be added to the My Card page through My Card.
+- The user can delete the products of his choice if he wants..
 
+## Technology Used
 
-
-
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+react, firebase, react-router,node, express, mongodb etc.
